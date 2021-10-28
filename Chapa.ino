@@ -11,7 +11,7 @@ BluetoothSerial SerialBT;
 //Variables
 byte opc=0;                                  //Seleccion de opcion
 String datoSerEve = "";  
-bool findatoSerEve = false;                       //Si el string esta completo (SerEve)
+bool findatoSerEve = false;                  //Si el string esta completo (SerEve)
 
 int seg=0;
 double velo=0;
@@ -21,18 +21,17 @@ volatile int  cont = 0;
 
 
 void setup() {
-  SerialBT.begin(115200);                   // inicio bluetooth
+/*SerialBT.begin(115200);                   // inicio bluetooth
   SerialBT.begin("ControlAcceso");          // Nombre dispositivo
-  SerialBT.println("Conexion disponible");/*
+  SerialBT.println("Conexion disponible");*/
   Serial.begin(115200);                     // inicio serial
-  Serial.println("Conexion disponible");*/
-  dato.reserve(200);                      //Guardo 200 bytes para datos de llegada
-  pinMode(vel, INPUT);                                              //RPM
-  attachInterrupt(digitalPinToInterrupt(vel), inter, RISING);
+  Serial.println("Conexion disponible");
+  datoSerEve.reserve(200);                      //Guardo 200 bytes para datos de llegada
+  pinMode(vel, INPUT);                          //RPM
 }
 void loop() {
-  SerialBT.println("Seleccione opcion (1) Abrir o (2) Cerrar");      //Pregunta por opcion
-  //Serial.println("Seleccione opcion (1) Abrir o (2) Cerrar");
+//SerialBT.println("Seleccione opcion (1) Abrir o (2) Cerrar");      //Pregunta por opcion
+  Serial.println("Seleccione opcion (1) Abrir o (2) Cerrar");
   serialEvent();
   opc=datoSerEve.toInt();
   //Serial.println(datoSerEve);
@@ -41,33 +40,27 @@ void loop() {
         SerialBT.println("Cerrando Puerta" );
         for (int i=0;i<=20;i++){                //AQUI ------>>>>>Cierro puerta<<<-------
 //--------------------------------------------------------------------------
-            seg++;
-            delay(999);
-            cont*=7.5;                        // Como son 8 interrupciones por vuelta (contador * (60/8)=7.5)
-            velo=pi*r*cont;                   // Conversion de rpm a km/h
-            velo;
-            SerialBT.print(velo);               //velocidad km/h BLE
-            SerialBT.println(" Km/h");
-            cont=0;
+
+
 //-----------------------------------------------------------------------------          
             }
-          opc=0;
-          datoSerEve="";          //limpiar el dato
+          opc=0;                //limpiar el dato
+          datoSerEve="";          
           findatoSerEve= false;
           SerialBT.println("Fin de medición.");
           break;
       case 2:                             //AQUI ------>>>>>Abro puerta<<<-------
         SerialBT.print("Seleccion vacia");
         delay(2000);
-        opc=0;
-        datoSerEve="";          //limpiar el dato
-        finSerEve= false;
+        opc=0;                  //limpiar el dato
+        datoSerEve="";          
+        findatoSerEve= false;
         break;
       default:
         SerialBT.print("Seleccion no valida");
         delay(2000);
-        opc=0;
-        datoSerEve="";          //limpiar el dato
+        opc=0;                  //limpiar el dato
+        datoSerEve="";          
         findatoSerEve= false;
         break;
   }
