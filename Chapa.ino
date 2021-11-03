@@ -7,62 +7,69 @@
 
 BluetoothSerial SerialBT;
 Servo servo;                                 //Objeto servo
+Servo servo2;
 
 //Variables
 byte opc=0;                                  //Seleccion de opcion
-String datoSerEve = "";  
-bool findatoSerEve = false;                  //Si el string esta completo (SerEve)
+String datoSerEve= "";  
+bool findatoSerEve= false;                  //Si el string esta completo (SerEve)
+
+int pos=0;                                   // variable de posición
 
 int seg=0;
 double velo=0;
 volatile int  cont = 0; 
-int pos=0;                                   // variable de posición
+
 
 void setup() {
-/*SerialBT.begin(115200);                   // inicio bluetooth
+  SerialBT.begin(115200);                   // inicio bluetooth
   SerialBT.begin("ControlAcceso");          // Nombre dispositivo
-  SerialBT.println("Conexion disponible");*/
+  SerialBT.println("Conexion disponible");
   Serial.begin(115200);                     // inicio serial------------------------
   Serial.println("Conexion disponible");
   datoSerEve.reserve(200);                      //Guardo 200 bytes para datos de llegada
   servo.attach(15);                             //Asigna pin 15 al objeto servo
+  servo2.attach(4);                             //Asigna pin 2 al objeto servo
 }
 void loop() {
-//SerialBT.println("Seleccione opcion (1) Abrir o (2) Cerrar");      //Pregunta por opcion
-  Serial.println("Seleccione opcion (1) Abrir o (2) Cerrar");
+SerialBT.println("Seleccione opcion (1) Abrir o (2) Cerrar");      //Pregunta por opcion
+//Serial.println("Seleccione opcion (1) Abrir o (2) Cerrar");
   serialEvent();
   opc=datoSerEve.toInt();
-  //Serial.println(datoSerEve);
+  Serial.println(opc);
+  
   switch (opc) {                                //seleccion de caso segun usuario
       case 1:
-        SerialBT.println("Cerrando Puerta" );
-//-------------------------------------------------------------------------AQUI ------>>>>>Cierro puerta<<<-------
+        Serial.println("Abriendo Puerta" );
+//-------------------------------------------------------------------------AQUI ------>>>>>Abro puerta<<<-------
 
-  for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
-    // in steps of 1 degree
-    servo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
-  }
-  for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-    servo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
-  }
+        for (pos = 0; pos <= 180; pos += 1) { // va de 0 a 180 grados
+                                              // en pasos de 1 grado
+          servo.write(pos);                   // servo va a posición pos
+          delay(15);                          // espera 15ms para ir a la posición
+        }
+        for (pos = 180; pos >= 0; pos -= 1) { // va de 180 a 0 grados
+          servo2.write(pos);                   // servo va a posición pos
+          delay(15);                          // espera 15ms para ir a la posición
+          
+        }
 //-----------------------------------------------------------------------------          
           
           opc=0;                //limpiar el dato
           datoSerEve="";          
           findatoSerEve= false;
-          SerialBT.println("Fin de medición.");
+          Serial.println("Fin de medición.");
           break;
-      case 2:                             //AQUI ------>>>>>Abro puerta<<<-------
-        SerialBT.print("Seleccion vacia");
+      case 2:                             //AQUI ------>>>>>Cierro puerta<<<-------
+        Serial.println("Cerrando Puerta");
+
         delay(2000);
         opc=0;                  //limpiar el dato
         datoSerEve="";          
         findatoSerEve= false;
         break;
       default:
-        SerialBT.print("Seleccion no valida");
+        Serial.println("Seleccion no valida");
         delay(2000);
         opc=0;                  //limpiar el dato
         datoSerEve="";          
@@ -73,8 +80,8 @@ void loop() {
 
 //--------------------------------------------------->>Esperar datos de ususario---------------------------
 void serialEvent() {                        // Funcion para esperar datos entrados por usuario
-  while (SerialBT.available()) {              //Espera por el buffer de datos
-    char inChar = (char)SerialBT.read();    //Almacena dato entrante (serial normal)
+while (SerialBT.available()) {            //Espera por el buffer de datos
+  char inChar = (char)SerialBT.read();    //Almacena dato entrante (serial normal)
     datoSerEve=inChar;                         //Almacena el dato local en variable global
     if (inChar == '\n') {                   //Si el dato que viene es nueva linea lo pone en variable para el loop
       findatoSerEve= true;
