@@ -48,7 +48,7 @@ void loop() {
     delay(15);                       // waits 15ms for the servo to reach the position
   }
 //-----------------------------------------------------------------------------          
-            }
+          
           opc=0;                //limpiar el dato
           datoSerEve="";          
           findatoSerEve= false;
