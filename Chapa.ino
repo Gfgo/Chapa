@@ -40,33 +40,40 @@ SerialBT.println("Seleccione opcion (1) Abrir o (2) Cerrar");      //Pregunta po
   
   switch (opc) {                                //seleccion de caso segun usuario
       case 1:
-        Serial.println("Abriendo Puerta" );
 //-------------------------------------------------------------------------AQUI ------>>>>>Abro puerta<<<-------
-
-        for (pos = 0; pos <= 180; pos += 1) { // va de 0 a 180 grados
+        SerialBT.println("Abriendo Puerta" );
+        for (pos=0; pos<=180; pos++) { // va de 0 a 180 grados
                                               // en pasos de 1 grado
           servo.write(pos);                   // servo va a posición pos
           delay(15);                          // espera 15ms para ir a la posición
         }
-        for (pos = 180; pos >= 0; pos -= 1) { // va de 180 a 0 grados
+        for (pos=180; pos>=0; pos--) { // va de 180 a 0 grados
           servo2.write(pos);                   // servo va a posición pos
-          delay(15);                          // espera 15ms para ir a la posición
-          
+          //delay(15);                          // espera 15ms para ir a la posición
         }
 //-----------------------------------------------------------------------------          
-          
           opc=0;                //limpiar el dato
           datoSerEve="";          
           findatoSerEve= false;
-          Serial.println("Fin de medición.");
+          SerialBT.println("Puerta Abierta");
           break;
-      case 2:                             //AQUI ------>>>>>Cierro puerta<<<-------
-        Serial.println("Cerrando Puerta");
-
-        delay(2000);
+      case 2:                             
+//------------------------------------------------------------------AQUI ------>>>>>Cierro puerta<<<-------
+        SerialBT.println("Cerrando Puerta");
+        for (pos=180; pos>=0; pos--) { // va de 180 a 0 grados
+                                              // en pasos de 1 grado
+          servo.write(pos);                   // servo va a posición pos
+          delay(15);                          // espera 15ms para ir a la posición
+        }
+        for (pos=0; pos<=180; pos++) { // va de 0 a 180 grados
+          servo2.write(pos);                   // servo va a posición pos
+          //delay(15);                          // espera 15ms para ir a la posición
+        }
+//-----------------------------------------------------------------------------
         opc=0;                  //limpiar el dato
         datoSerEve="";          
         findatoSerEve= false;
+       SerialBT.println("Puerta Cerrada");
         break;
       default:
         Serial.println("Seleccion no valida");
