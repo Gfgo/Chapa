@@ -3,9 +3,9 @@
   #include <avr/power.h>
 #endif
 #define PIN       5                              //Pin control led
-#define NUMPIXELS 12                              //Pixeles de la tira
+#define NUMpixel 12                              //Pixeles de la tira
 
-Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel pixel = Adafruit_NeoPixel(NUMpixel, PIN, NEO_GRB + NEO_KHZ800);
 #define DELAYVAL 500                                  
 
 #include "BluetoothSerial.h"                      //Envio por BLE de Solicitud de apertura 
@@ -36,23 +36,32 @@ void setup() {
   datoSerEve.reserve(200);                      //Guardo 200 bytes para datos de llegada
   servo.attach(15);                             //Asigna pin 15 al objeto servo
   servo2.attach(4);                             //Asigna pin 2 al objeto servo2
-  pixels.begin();                                //Inicia leds
-  pixels.show();
+  pixel.begin();                                //Inicia leds
+  pixel.setBrightness(20);
+  pixel.show();
   pinMode(buser, OUTPUT);  
 }
 void loop() {
-  pixels.setBrightness(20);
-SerialBT.println("Seleccione opcion (1) Abrir o (2) Cerrar");      //Pregunta por opcion
+  SerialBT.println("Seleccione opcion (1) Abrir o (2) Cerrar");      //Pregunta por opcion
   serialEvent();
   opc=datoSerEve.toInt();
   Serial.println(opc);
+
+  if(opc==0){
+  for(uint16_t i=0; i<pixel.numPixels(); i++) {
+            pixel.setPixelColor(i, 255, 0,  0);//Rojo
+            pixel.show();
+        }
+  }
   
   switch (opc) {                                //seleccion de caso segun usuario
       case 1:
 //-------------------------------------------------------------------------AQUI ------>>>>>Abro puerta<<<-------
         SerialBT.println("Abriendo Puerta" );
-        pixels.setPixelColor(12, 255, 255,  0);//amarillo
-        pixels.show();
+        for(uint16_t i=0; i<pixel.numPixels(); i++) {
+            pixel.setPixelColor(i, 255, 255,  0);//amarillo
+            pixel.show();
+        }
         for (pos=0; pos<=180; pos++) { // va de 0 a 180 grados
                                               // en pasos de 1 grado
           servo.write(pos);                   // servo va a posición pos
@@ -63,8 +72,11 @@ SerialBT.println("Seleccione opcion (1) Abrir o (2) Cerrar");      //Pregunta po
           servo2.write(pos);                   // servo va a posición pos
           //delay(15);                          // espera 15ms para ir a la posición
         }
-        pixels.setPixelColor(12, 0, 255,  0);//verde
-        pixels.show(); 
+        for(uint16_t i=0; i<pixel.numPixels(); i++) {
+            pixel.setPixelColor(i, 0, 255,  0);//verde
+            pixel.show();
+            delay(500);
+        }
         digitalWrite(buser, LOW);        
 //-----------------------------------------------------------------------------          
           opc=0;                //limpiar el dato
@@ -75,8 +87,10 @@ SerialBT.println("Seleccione opcion (1) Abrir o (2) Cerrar");      //Pregunta po
       case 2:                             
 //------------------------------------------------------------------AQUI ------>>>>>Cierro puerta<<<-------
         SerialBT.println("Cerrando Puerta");
-        pixels.setPixelColor(12, 255, 255,  0);//amarillo
-        pixels.show();
+        for(uint16_t i=0; i<pixel.numPixels(); i++) {
+            pixel.setPixelColor(i, 255, 255,  0);//amarillo
+            pixel.show();
+        }
         for (pos=180; pos>=0; pos--) { // va de 180 a 0 grados
                                               // en pasos de 1 grado
           servo.write(pos);                   // servo va a posición pos
@@ -86,9 +100,7 @@ SerialBT.println("Seleccione opcion (1) Abrir o (2) Cerrar");      //Pregunta po
         for (pos=0; pos<=180; pos++) { // va de 0 a 180 grados
           servo2.write(pos);                   // servo va a posición pos
           //delay(15);                          // espera 15ms para ir a la posición
-        }  
-        pixels.setPixelColor(12, 255, 0,  0);//Rojo
-        pixels.show();
+        } 
         digitalWrite(buser, LOW);      
 //-----------------------------------------------------------------------------
         opc=0;                  //limpiar el dato
