@@ -47,13 +47,19 @@ void loop() {
   opc=datoSerEve.toInt();
   Serial.println(opc);
 
-  if(opc==0){
+  if((opc==0)&&((servo.read())==180)){
+    for(uint16_t i=0; i<pixel.numPixels(); i++) {
+        pixel.setPixelColor(i, 0, 255,  0);//verde
+        pixel.show();
+      }
+    }
+    else {
   for(uint16_t i=0; i<pixel.numPixels(); i++) {
             pixel.setPixelColor(i, 255, 0,  0);//Rojo
             pixel.show();
         }
   }
-  
+
   switch (opc) {                                //seleccion de caso segun usuario
       case 1:
 //-------------------------------------------------------------------------AQUI ------>>>>>Abro puerta<<<-------
@@ -72,11 +78,13 @@ void loop() {
           servo2.write(pos);                   // servo va a posición pos
           //delay(15);                          // espera 15ms para ir a la posición
         }
+      if ((servo.read())==180){
         for(uint16_t i=0; i<pixel.numPixels(); i++) {
-            pixel.setPixelColor(i, 0, 255,  0);//verde
-            pixel.show();
-            delay(500);
+        pixel.setPixelColor(i, 0, 255,  0);//verde
+        pixel.show();
         }
+      }
+  
         digitalWrite(buser, LOW);        
 //-----------------------------------------------------------------------------          
           opc=0;                //limpiar el dato
