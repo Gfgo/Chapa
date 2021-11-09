@@ -1,3 +1,4 @@
+#include <ESP32SharpIR.h>
 #include <Adafruit_NeoPixel.h>
 #ifdef __AVR__
   #include <avr/power.h>
@@ -26,10 +27,12 @@ bool findatoSerEve= false;                  //Si el string esta completo (SerEve
 
 int pos=0;                                   // variable de posición
 
-byte buser=18;                               //control buzzer 
+byte buser=18;                               //control buzzer
+byte sharp=19; 
 
 
 void setup() {
+  Serial.begin(115200);
   SerialBT.begin(115200);                   // inicio bluetooth
   SerialBT.begin("ControlAcceso");          // Nombre dispositivo
   SerialBT.println("Conexion disponible");
@@ -39,7 +42,8 @@ void setup() {
   pixel.begin();                                //Inicia leds
   pixel.setBrightness(20);
   pixel.show();
-  pinMode(buser, OUTPUT);  
+  pinMode(buser, OUTPUT);
+  pinMode(19, INPUT);
 }
 void loop() {
   SerialBT.println("Seleccione opcion (1) Abrir o (2) Cerrar");      //Pregunta por opcion
@@ -47,18 +51,13 @@ void loop() {
   opc=datoSerEve.toInt();
   Serial.println(opc);
 
-  if((opc==0)&&((servo.read())==180)){
-    for(uint16_t i=0; i<pixel.numPixels(); i++) {
-        pixel.setPixelColor(i, 0, 255,  0);//verde
-        pixel.show();
-      }
-    }
-    else {
-  for(uint16_t i=0; i<pixel.numPixels(); i++) {
-            pixel.setPixelColor(i, 255, 0,  0);//Rojo
-            pixel.show();
-        }
-  }
+    uint16_t value = analogRead (sharp);
+    uint16_t range = get_gp2d12 (value);
+    Serial.println (value);
+    Serial.print (range);
+    Serial.println (" mm");
+    Serial.println ();
+    delay (500);
 
   switch (opc) {                                //seleccion de caso segun usuario
       case 1:
@@ -67,7 +66,7 @@ void loop() {
         for(uint16_t i=0; i<pixel.numPixels(); i++) {
             pixel.setPixelColor(i, 255, 255,  0);//amarillo
             pixel.show();
-        }
+          }
         for (pos=0; pos<=180; pos++) { // va de 0 a 180 grados
                                               // en pasos de 1 grado
           servo.write(pos);                   // servo va a posición pos
@@ -76,16 +75,14 @@ void loop() {
         }
         for (pos=180; pos>=0; pos--) { // va de 180 a 0 grados
           servo2.write(pos);                   // servo va a posición pos
-          //delay(15);                          // espera 15ms para ir a la posición
+          delay(15);                          // espera 15ms para ir a la posición
         }
-      if ((servo.read())==180){
-        for(uint16_t i=0; i<pixel.numPixels(); i++) {
-        pixel.setPixelColor(i, 0, 255,  0);//verde
-        pixel.show();
-        }
-      }
-  
-        digitalWrite(buser, LOW);        
+//        for(uint16_t i=0; i<pixel.numPixels(); i++) {
+//            pixel.setPixelColor(i, 0, 255,  0);//verde
+//            pixel.show();
+//            delay(10);
+//        }
+       digitalWrite(buser, LOW);        
 //-----------------------------------------------------------------------------          
           opc=0;                //limpiar el dato
           datoSerEve="";          
@@ -107,8 +104,13 @@ void loop() {
         }
         for (pos=0; pos<=180; pos++) { // va de 0 a 180 grados
           servo2.write(pos);                   // servo va a posición pos
-          //delay(15);                          // espera 15ms para ir a la posición
-        } 
+          delay(15);                          // espera 15ms para ir a la posición
+        }
+//        for(uint16_t i=0; i<pixel.numPixels(); i++) {
+//            pixel.setPixelColor(i, 255, 0,  0);//rojo
+//            pixel.show();
+//        delay(10);
+//        } 
         digitalWrite(buser, LOW);      
 //-----------------------------------------------------------------------------
         opc=0;                  //limpiar el dato
@@ -137,3 +139,8 @@ while (SerialBT.available()) {            //Espera por el buffer de datos
   }
 }
 //--------------------------------------------------->>Esperar datos de ususario---------------------------
+
+uint16_t get_gp2d12 (uint16_t value) {
+    if (value < 10) value = 10;
+    return ((67870.0 / (value - 3.0)) - 40.0);
+}
