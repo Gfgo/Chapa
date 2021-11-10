@@ -1,9 +1,8 @@
-#include <ESP32SharpIR.h>
 #include <Adafruit_NeoPixel.h>
 #ifdef __AVR__
   #include <avr/power.h>
 #endif
-#define PIN       5                              //Pin control led
+#define PIN      5                              //Pin control led
 #define NUMpixel 12                              //Pixeles de la tira
 
 Adafruit_NeoPixel pixel = Adafruit_NeoPixel(NUMpixel, PIN, NEO_GRB + NEO_KHZ800);
@@ -28,7 +27,8 @@ bool findatoSerEve= false;                  //Si el string esta completo (SerEve
 int pos=0;                                   // variable de posición
 
 byte buser=18;                               //control buzzer
-byte sharp=19; 
+byte pir=19;
+byte indicator = 2; 
 
 
 void setup() {
@@ -43,7 +43,8 @@ void setup() {
   pixel.setBrightness(20);
   pixel.show();
   pinMode(buser, OUTPUT);
-  pinMode(19, INPUT);
+  pinMode(pir,INPUT);
+  pinMode(indicator,OUTPUT);
 }
 void loop() {
   SerialBT.println("Seleccione opcion (1) Abrir o (2) Cerrar");      //Pregunta por opcion
@@ -51,20 +52,21 @@ void loop() {
   opc=datoSerEve.toInt();
   Serial.println(opc);
 
-    uint16_t value = analogRead (sharp);
-    uint16_t range = get_gp2d12 (value);
-    Serial.println (value);
-    Serial.print (range);
-    Serial.println (" mm");
-    Serial.println ();
-    delay (500);
+      byte state = digitalRead(pir);
+      digitalWrite(indicator,state);
+      if(state == 1)Serial.println("Somebody is in this area!");
+      else if(state == 0)Serial.println("No one!");
+      delay(500);
+//      Serial.println (pir);
+//      Serial.println (state);
+//      Serial.println (indicator);
 
   switch (opc) {                                //seleccion de caso segun usuario
       case 1:
 //-------------------------------------------------------------------------AQUI ------>>>>>Abro puerta<<<-------
         SerialBT.println("Abriendo Puerta" );
         for(uint16_t i=0; i<pixel.numPixels(); i++) {
-            pixel.setPixelColor(i, 255, 255,  0);//amarillo
+            pixel.setPixelColor(i, 255, 255, 0);//amarillo
             pixel.show();
           }
         for (pos=0; pos<=180; pos++) { // va de 0 a 180 grados
@@ -139,8 +141,3 @@ while (SerialBT.available()) {            //Espera por el buffer de datos
   }
 }
 //--------------------------------------------------->>Esperar datos de ususario---------------------------
-
-uint16_t get_gp2d12 (uint16_t value) {
-    if (value < 10) value = 10;
-    return ((67870.0 / (value - 3.0)) - 40.0);
-}
