@@ -1,0 +1,345 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector_Generic:Conn_01x03 J2
+U 1 1 6306915A
+P 2200 2500
+F 0 "J2" H 2118 2175 50  0000 C CNN
+F 1 "Conn_PIR" H 2118 2266 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 2200 2500 50  0001 C CNN
+F 3 "~" H 2200 2500 50  0001 C CNN
+	1    2200 2500
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x03 J3
+U 1 1 63069946
+P 2200 3050
+F 0 "J3" H 2118 2725 50  0000 C CNN
+F 1 "Conn_BUZZ" H 2118 2816 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 2200 3050 50  0001 C CNN
+F 3 "~" H 2200 3050 50  0001 C CNN
+	1    2200 3050
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR0109
+U 1 1 630711FA
+P 2400 2400
+F 0 "#PWR0109" H 2400 2150 50  0001 C CNN
+F 1 "GND" V 2405 2272 50  0000 R CNN
+F 2 "" H 2400 2400 50  0001 C CNN
+F 3 "" H 2400 2400 50  0001 C CNN
+	1    2400 2400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR0110
+U 1 1 63071712
+P 2400 2950
+F 0 "#PWR0110" H 2400 2700 50  0001 C CNN
+F 1 "GND" V 2405 2822 50  0000 R CNN
+F 2 "" H 2400 2950 50  0001 C CNN
+F 3 "" H 2400 2950 50  0001 C CNN
+	1    2400 2950
+	0    -1   -1   0   
+$EndComp
+Text GLabel 2400 2600 2    50   Input ~ 0
+IO19
+Text GLabel 2400 3150 2    50   Input ~ 0
+IO18
+$Comp
+L Connector_Generic:Conn_01x03 J1
+U 1 1 63235445
+P 2200 3650
+F 0 "J1" H 2118 3325 50  0000 C CNN
+F 1 "Conn_SERVO1" H 2118 3416 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 2200 3650 50  0001 C CNN
+F 3 "~" H 2200 3650 50  0001 C CNN
+	1    2200 3650
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x03 J4
+U 1 1 63235875
+P 2200 4250
+F 0 "J4" H 2118 3925 50  0000 C CNN
+F 1 "Conn_SERVO2" H 2118 4016 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 2200 4250 50  0001 C CNN
+F 3 "~" H 2200 4250 50  0001 C CNN
+	1    2200 4250
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR0101
+U 1 1 63238F1F
+P 2400 3550
+F 0 "#PWR0101" H 2400 3300 50  0001 C CNN
+F 1 "GND" V 2405 3422 50  0000 R CNN
+F 2 "" H 2400 3550 50  0001 C CNN
+F 3 "" H 2400 3550 50  0001 C CNN
+	1    2400 3550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR0102
+U 1 1 6323925B
+P 2400 4150
+F 0 "#PWR0102" H 2400 3900 50  0001 C CNN
+F 1 "GND" V 2405 4022 50  0000 R CNN
+F 2 "" H 2400 4150 50  0001 C CNN
+F 3 "" H 2400 4150 50  0001 C CNN
+	1    2400 4150
+	0    -1   -1   0   
+$EndComp
+Text GLabel 2400 3750 2    50   Input ~ 0
+IO32
+Text GLabel 2400 4350 2    50   Input ~ 0
+IO33
+$Comp
+L LED:NeoPixel_THT D1
+U 1 1 62BCF852
+P 2200 5150
+F 0 "D1" H 2544 5196 50  0000 L CNN
+F 1 "NeoPixel_THT" H 2544 5105 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 2250 4850 50  0001 L TNN
+F 3 "https://www.adafruit.com/product/1938" H 2300 4775 50  0001 L TNN
+	1    2200 5150
+	-1   0    0    1   
+$EndComp
+NoConn ~ 1900 5150
+Text GLabel 2500 5150 2    50   Input ~ 0
+IO5
+$Comp
+L power:GND #PWR0105
+U 1 1 632AA4A0
+P 2200 4850
+F 0 "#PWR0105" H 2200 4600 50  0001 C CNN
+F 1 "GND" V 2205 4722 50  0000 R CNN
+F 2 "" H 2200 4850 50  0001 C CNN
+F 3 "" H 2200 4850 50  0001 C CNN
+	1    2200 4850
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR0107
+U 1 1 632ACBA8
+P 5000 2650
+F 0 "#PWR0107" H 5000 2400 50  0001 C CNN
+F 1 "GND" V 5005 2522 50  0000 R CNN
+F 2 "" H 5000 2650 50  0001 C CNN
+F 3 "" H 5000 2650 50  0001 C CNN
+	1    5000 2650
+	0    -1   -1   0   
+$EndComp
+Text GLabel 5000 3350 2    50   Input ~ 0
+IO19
+Text GLabel 5000 3450 2    50   Input ~ 0
+IO18
+Text GLabel 5000 3550 2    50   Input ~ 0
+IO5
+$Comp
+L Device:CP C1
+U 1 1 632BFA1C
+P 3000 1850
+F 0 "C1" H 3118 1896 50  0000 L CNN
+F 1 "100U" H 3118 1805 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 3038 1700 50  0001 C CNN
+F 3 "~" H 3000 1850 50  0001 C CNN
+	1    3000 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C3
+U 1 1 632BFDC8
+P 3900 1850
+F 0 "C3" H 4018 1896 50  0000 L CNN
+F 1 "100U" H 4018 1805 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 3938 1700 50  0001 C CNN
+F 3 "~" H 3900 1850 50  0001 C CNN
+	1    3900 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Regulator_Linear:LM1117-3.3 U2
+U 1 1 6324C146
+P 3450 1700
+F 0 "U2" H 3450 1942 50  0000 C CNN
+F 1 "LM1117-3.3" H 3450 1851 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 3450 1700 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm1117.pdf" H 3450 1700 50  0001 C CNN
+	1    3450 1700
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	3750 1700 3900 1700
+Wire Wire Line
+	3900 2000 3450 2000
+Connection ~ 3450 2000
+Wire Wire Line
+	3450 2000 3000 2000
+$Comp
+L power:GND #PWR0103
+U 1 1 6324E99D
+P 3450 2000
+F 0 "#PWR0103" H 3450 1750 50  0001 C CNN
+F 1 "GND" V 3455 1872 50  0000 R CNN
+F 2 "" H 3450 2000 50  0001 C CNN
+F 3 "" H 3450 2000 50  0001 C CNN
+	1    3450 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 1700 3900 1700
+Connection ~ 3900 1700
+Text GLabel 2850 1700 0    50   Input ~ 0
+Vo33
+Text GLabel 3400 2650 0    50   Input ~ 0
+Vo33
+$Comp
+L Device:CP C2
+U 1 1 63250B91
+P 3000 950
+F 0 "C2" H 3118 996 50  0000 L CNN
+F 1 "100U" H 3118 905 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 3038 800 50  0001 C CNN
+F 3 "~" H 3000 950 50  0001 C CNN
+	1    3000 950 
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C4
+U 1 1 63250B97
+P 3900 950
+F 0 "C4" H 4018 996 50  0000 L CNN
+F 1 "100U" H 4018 905 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 3938 800 50  0001 C CNN
+F 3 "~" H 3900 950 50  0001 C CNN
+	1    3900 950 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3150 800  3000 800 
+Wire Wire Line
+	3750 800  3900 800 
+Wire Wire Line
+	3900 1100 3450 1100
+Connection ~ 3450 1100
+Wire Wire Line
+	3450 1100 3000 1100
+$Comp
+L power:GND #PWR0104
+U 1 1 63250BA9
+P 3450 1100
+F 0 "#PWR0104" H 3450 850 50  0001 C CNN
+F 1 "GND" V 3455 972 50  0000 R CNN
+F 2 "" H 3450 1100 50  0001 C CNN
+F 3 "" H 3450 1100 50  0001 C CNN
+	1    3450 1100
+	1    0    0    -1  
+$EndComp
+Text GLabel 4350 800  2    50   Input ~ 0
+Vo5
+Wire Wire Line
+	2800 800  3000 800 
+Connection ~ 3000 800 
+Text GLabel 2400 2500 2    50   Input ~ 0
+Vo33
+Text GLabel 2400 3050 2    50   Input ~ 0
+Vo33
+Text GLabel 2200 5450 3    50   Input ~ 0
+Vo33
+Text GLabel 2400 3650 2    50   Input ~ 0
+Vo5
+Text GLabel 2400 4250 2    50   Input ~ 0
+Vo5
+Text GLabel 4100 1700 2    50   Input ~ 0
+Vo5
+$Comp
+L Connector:Screw_Terminal_01x02 J5
+U 1 1 632AFE5D
+P 2600 800
+F 0 "J5" H 2680 792 50  0000 L CNN
+F 1 "Screw_Terminal_01x02" H 2680 701 50  0000 L CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal" H 2600 800 50  0001 C CNN
+F 3 "~" H 2600 800 50  0001 C CNN
+	1    2600 800 
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 800  3900 800 
+Connection ~ 3900 800 
+Wire Wire Line
+	2850 1700 3000 1700
+Connection ~ 3000 1700
+Wire Wire Line
+	3000 1700 3150 1700
+Text GLabel 3400 3250 0    50   Input ~ 0
+IO32
+Text GLabel 3400 3350 0    50   Input ~ 0
+IO33
+$Comp
+L ESP32-DEVKITC-32D:ESP32-DEVKITC-32D U1
+U 1 1 6373C680
+P 4200 3550
+F 0 "U1" H 4200 4717 50  0000 C CNN
+F 1 "ESP32-DEVKITC-32D" H 4200 4626 50  0000 C CNN
+F 2 "MODULOS:Esp32wroverD" H 4200 3550 50  0001 L BNN
+F 3 "" H 4200 3550 50  0001 L BNN
+F 4 "Espressif Systems" H 4200 3550 50  0001 L BNN "MANUFACTURER"
+F 5 "4" H 4200 3550 50  0001 L BNN "PARTREV"
+	1    4200 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0106
+U 1 1 6373E547
+P 5000 3250
+F 0 "#PWR0106" H 5000 3000 50  0001 C CNN
+F 1 "GND" V 5005 3122 50  0000 R CNN
+F 2 "" H 5000 3250 50  0001 C CNN
+F 3 "" H 5000 3250 50  0001 C CNN
+	1    5000 3250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR0108
+U 1 1 6373EA88
+P 3400 3950
+F 0 "#PWR0108" H 3400 3700 50  0001 C CNN
+F 1 "GND" V 3405 3822 50  0000 R CNN
+F 2 "" H 3400 3950 50  0001 C CNN
+F 3 "" H 3400 3950 50  0001 C CNN
+	1    3400 3950
+	0    1    1    0   
+$EndComp
+$Comp
+L Regulator_Linear:LM7805_TO220 U3
+U 1 1 63852FCB
+P 3450 800
+F 0 "U3" H 3450 1042 50  0000 C CNN
+F 1 "LM7805_TO220" H 3450 951 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 3450 1025 50  0001 C CIN
+F 3 "https://www.onsemi.cn/PowerSolutions/document/MC7800-D.PDF" H 3450 750 50  0001 C CNN
+	1    3450 800 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2800 900  2800 1100
+Wire Wire Line
+	2800 1100 3000 1100
+Connection ~ 3000 1100
+$EndSCHEMATC
