@@ -251,7 +251,7 @@ F 3 "" H 3450 1100 50  0001 C CNN
 	1    3450 1100
 	1    0    0    -1  
 $EndComp
-Text GLabel 2800 800  0    50   Input ~ 0
+Text GLabel 4350 800  2    50   Input ~ 0
 Vo5
 Wire Wire Line
 	2800 800  3000 800 
@@ -271,38 +271,22 @@ Vo5
 $Comp
 L Connector:Screw_Terminal_01x02 J5
 U 1 1 632AFE5D
-P 4550 800
-F 0 "J5" H 4630 792 50  0000 L CNN
-F 1 "Screw_Terminal_01x02" H 4630 701 50  0000 L CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal" H 4550 800 50  0001 C CNN
-F 3 "~" H 4550 800 50  0001 C CNN
-	1    4550 800 
-	1    0    0    -1  
+P 2600 800
+F 0 "J5" H 2680 792 50  0000 L CNN
+F 1 "Screw_Terminal_01x02" H 2680 701 50  0000 L CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal" H 2600 800 50  0001 C CNN
+F 3 "~" H 2600 800 50  0001 C CNN
+	1    2600 800 
+	-1   0    0    -1  
 $EndComp
 Wire Wire Line
 	4350 800  3900 800 
 Connection ~ 3900 800 
 Wire Wire Line
-	4350 900  4350 1100
-Wire Wire Line
-	4350 1100 3900 1100
-Connection ~ 3900 1100
-Wire Wire Line
 	2850 1700 3000 1700
 Connection ~ 3000 1700
 Wire Wire Line
 	3000 1700 3150 1700
-$Comp
-L Regulator_Linear:LM1117-5.0 U3
-U 1 1 6324F9D8
-P 3450 800
-F 0 "U3" H 3450 1042 50  0000 C CNN
-F 1 "LM1117-5.0" H 3450 951 50  0000 C CNN
-F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 3450 800 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/lm1117.pdf" H 3450 800 50  0001 C CNN
-	1    3450 800 
-	-1   0    0    -1  
-$EndComp
 Text GLabel 3400 3250 0    50   Input ~ 0
 IO32
 Text GLabel 3400 3350 0    50   Input ~ 0
@@ -342,4 +326,20 @@ F 3 "" H 3400 3950 50  0001 C CNN
 	1    3400 3950
 	0    1    1    0   
 $EndComp
+$Comp
+L Regulator_Linear:LM7805_TO220 U3
+U 1 1 63852FCB
+P 3450 800
+F 0 "U3" H 3450 1042 50  0000 C CNN
+F 1 "LM7805_TO220" H 3450 951 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-220-3_Vertical" H 3450 1025 50  0001 C CIN
+F 3 "https://www.onsemi.cn/PowerSolutions/document/MC7800-D.PDF" H 3450 750 50  0001 C CNN
+	1    3450 800 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2800 900  2800 1100
+Wire Wire Line
+	2800 1100 3000 1100
+Connection ~ 3000 1100
 $EndSCHEMATC

@@ -1,0 +1,38 @@
+"Source:","C:\Users\gfgonzalez\OneDrive - Servicio Nacional de Aprendizaje\Documentos\Arduino\Proyectos\GitHub\Chapa\Acceso\Acceso.sch"
+"Date:","14/12/2022 11:02:30 a. m."
+"Tool:","Eeschema (5.1.12)-1"
+"Generator:","C:\Program Files\KiCad\bin\scripting\plugins/bom_csv_grouped_by_value.py"
+"Component Count:","13"
+
+"Individual Components:"
+
+"Item","Qty","Reference(s)","Value","LibPart","Footprint","Datasheet","MANUFACTURER","PARTREV"
+"","","C1","100U","Device:CP","Capacitor_THT:CP_Radial_D5.0mm_P2.50mm","~","",""
+"","","C2","100U","Device:CP","Capacitor_THT:CP_Radial_D5.0mm_P2.50mm","~","",""
+"","","C3","100U","Device:CP","Capacitor_THT:CP_Radial_D5.0mm_P2.50mm","~","",""
+"","","C4","100U","Device:CP","Capacitor_THT:CP_Radial_D5.0mm_P2.50mm","~","",""
+"","","D1","NeoPixel_THT","LED:NeoPixel_THT","Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical","https://www.adafruit.com/product/1938","",""
+"","","J1","Conn_SERVO1","Connector_Generic:Conn_01x03","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~","",""
+"","","J2","Conn_PIR","Connector_Generic:Conn_01x03","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~","",""
+"","","J3","Conn_BUZZ","Connector_Generic:Conn_01x03","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~","",""
+"","","J4","Conn_SERVO2","Connector_Generic:Conn_01x03","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~","",""
+"","","J5","Screw_Terminal_01x02","Connector:Screw_Terminal_01x02","TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal","~","",""
+"","","U1","ESP32-DEVKITC-32D","ESP32-DEVKITC-32D:ESP32-DEVKITC-32D","MODULOS:Esp32wroverD","","Espressif Systems","4"
+"","","U2","LM1117-3.3","Regulator_Linear:LM1117-3.3","Package_TO_SOT_THT:TO-220-3_Vertical","http://www.ti.com/lit/ds/symlink/lm1117.pdf","",""
+"","","U3","LM7805_TO220","Regulator_Linear:LM7805_TO220","Package_TO_SOT_THT:TO-220-3_Vertical","https://www.onsemi.cn/PowerSolutions/document/MC7800-D.PDF","",""
+
+
+
+"Collated Components:"
+
+"Item","Qty","Reference(s)","Value","LibPart","Footprint","Datasheet","MANUFACTURER","PARTREV"
+"1","4","C1, C2, C3, C4","100U","Device:CP","Capacitor_THT:CP_Radial_D5.0mm_P2.50mm","~","",""
+"2","1","D1","NeoPixel_THT","LED:NeoPixel_THT","Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical","https://www.adafruit.com/product/1938","",""
+"3","1","J1","Conn_SERVO1","Connector_Generic:Conn_01x03","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~","",""
+"4","1","J2","Conn_PIR","Connector_Generic:Conn_01x03","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~","",""
+"5","1","J3","Conn_BUZZ","Connector_Generic:Conn_01x03","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~","",""
+"6","1","J4","Conn_SERVO2","Connector_Generic:Conn_01x03","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~","",""
+"7","1","J5","Screw_Terminal_01x02","Connector:Screw_Terminal_01x02","TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal","~","",""
+"8","1","U1","ESP32-DEVKITC-32D","ESP32-DEVKITC-32D:ESP32-DEVKITC-32D","MODULOS:Esp32wroverD","","Espressif Systems","4"
+"9","1","U2","LM1117-3.3","Regulator_Linear:LM1117-3.3","Package_TO_SOT_THT:TO-220-3_Vertical","http://www.ti.com/lit/ds/symlink/lm1117.pdf","",""
+"10","1","U3","LM7805_TO220","Regulator_Linear:LM7805_TO220","Package_TO_SOT_THT:TO-220-3_Vertical","https://www.onsemi.cn/PowerSolutions/document/MC7800-D.PDF","",""
